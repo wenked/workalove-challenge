@@ -1,0 +1,29 @@
+.input-field {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+input {
+	background-color: #6c757d;
+	color: #f8f9fa;
+	border-radius: 15px;
+	width: 90%;
+	padding: 10px;
+	margin: 5px;
+
+	outline: none;
+	border: none;
+}
+
+button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	outline: none;
+	width: 50px;
+	color: #f8f9fa;
+	background-color: inherit;
+	cursor: pointer;
+}

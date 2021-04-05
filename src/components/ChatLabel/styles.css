@@ -1,0 +1,27 @@
+.chatlabel-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.img-container {
+	display: flex;
+	flex-direction: row;
+	font-weight: 600;
+	align-items: center;
+}
+
+.label-img {
+	border-radius: 100%;
+	width: 40px;
+	margin: 5px;
+}
+
+.chat-content {
+	background-color: #6c757d;
+	color: #f8f9fa;
+	border-radius: 15px;
+	width: 90%;
+	padding: 10px;
+	margin: 5px;
+}
