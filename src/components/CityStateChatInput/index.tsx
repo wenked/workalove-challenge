@@ -10,11 +10,7 @@ interface InputProps {
 }
 
 const CityStateChatInput: React.FC<InputProps> = ({ setShowNext }) => {
-	const {
-		initialValues,
-		setFieldValue,
-		submitForm,
-	} = useFormikContext<Values>();
+	const { initialValues, setFieldValue } = useFormikContext<Values>();
 	const [error, setError] = useState(false);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

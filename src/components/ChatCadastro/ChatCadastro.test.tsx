@@ -1,14 +1,5 @@
-import {
-	render,
-	screen,
-	fireEvent,
-	getByTestId,
-	waitFor,
-} from '@testing-library/react';
-import React from 'react';
-import { act } from 'react-dom/test-utils';
+import { render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
-
 import ChatCadastro from './index';
 
 test('Form test', async () => {
@@ -24,8 +15,11 @@ test('Form test', async () => {
 	user.click(screen.getByTestId('date-enter-button'));
 	const emailInput = screen.getByTestId('email-input');
 	user.type(emailInput, 'teste@teste.com');
-	user.click(screen.getByTestId('email-enter-button'));
+	//user.click(screen.getByTestId('email-enter-button'));
+
 	await waitFor(() => {
 		console.log(wrapper.debug());
+
+		expect(screen.getByTestId('email-label')).toHaveTextContent('Email');
 	});
 });

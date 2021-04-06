@@ -54,7 +54,7 @@ const ChatCadastro: React.FC = () => {
 					}
 				}}>
 				{(props: FormikProps<Values>) => (
-					<Form style={{ width: '100%' }}>
+					<Form style={{ width: '100%' }} data-testid='chat-form'>
 						<div className='input-container' data-testid='form-test'>
 							<div>{props.isSubmitting && 'teste'}</div>
 							<div>
@@ -92,7 +92,9 @@ const ChatCadastro: React.FC = () => {
 							) : null}
 							{showEmail ? (
 								<div>
-									<ChatLabel>Agora me fala teu e-mail por gentilza.</ChatLabel>
+									<ChatLabel data-testid='email-label'>
+										Agora me fala teu e-mail por gentilza.
+									</ChatLabel>
 									<ChatInput
 										name='email'
 										type='email'
