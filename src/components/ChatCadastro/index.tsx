@@ -105,7 +105,7 @@ const ChatCadastro: React.FC = () => {
 							{showStars ? (
 								<div>
 									<ChatLabel>
-										Você finalizou o teste faça uam avaliação sobre o processo
+										Você finalizou o teste faça uma avaliação sobre o processo
 										que realizou até chegar aqui. Nós que agradecemos !
 									</ChatLabel>
 									<StarsInput />

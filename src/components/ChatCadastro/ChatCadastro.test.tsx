@@ -15,10 +15,12 @@ test('Form test', async () => {
 	user.click(screen.getByTestId('date-enter-button'));
 	const emailInput = screen.getByTestId('email-input');
 	user.type(emailInput, 'teste@teste.com');
-	//user.click(screen.getByTestId('email-enter-button'));
+	user.click(screen.getByTestId('email-enter-button'));
 
 	await waitFor(() => {
 		console.log(wrapper.debug());
 	});
-	expect(wrapper.container).toHaveTextContent('e-mail');
+	expect(wrapper.container).toHaveTextContent(
+		'Você finalizou o teste faça uma avaliação sobre o processo que realizou até chegar aqui. Nós que agradecemos !'
+	);
 });
