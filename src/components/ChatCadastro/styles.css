@@ -9,6 +9,7 @@
 	max-height: 90vh;
 	flex-grow: 1;
 	z-index: 1;
+	transition: all 3s ease;
 }
 
 .input-container {

@@ -17,6 +17,12 @@ const ChatInput = (props: FieldHookConfig<string> & InputProps) => {
 				<div className='input-error-container'>
 					<div style={{ display: 'flex', flexDirection: 'row' }}>
 						<input
+							onKeyPress={(e) => {
+								if (e.key === 'Enter') {
+									props.setShowNext(true);
+								}
+							}}
+							data-testid={`${props.type}-input`}
 							{...field}
 							placeholder={props.placeholder}
 							type={props.type}
@@ -24,7 +30,10 @@ const ChatInput = (props: FieldHookConfig<string> & InputProps) => {
 								border: meta.touched && meta.error ? '2px solid red' : '',
 							}}
 						/>
-						<button type='button' onClick={() => props.setShowNext(true)}>
+						<button
+							data-testid={`${props.type}-enter-button`}
+							type='button'
+							onClick={() => props.setShowNext(true)}>
 							<FiSend />
 						</button>
 					</div>

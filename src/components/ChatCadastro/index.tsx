@@ -45,19 +45,21 @@ const ChatCadastro: React.FC = () => {
 				}}
 				validationSchema={SignupSchema}
 				onSubmit={async (values) => {
-					const res = await axios.post(
-						'https://606b1f44f8678400172e5a94.mockapi.io/user',
-						values
-					);
-					console.log(res.data);
+					if (values.stars !== 0) {
+						const res = await axios.post(
+							'https://606b1f44f8678400172e5a94.mockapi.io/user',
+							values
+						);
+						console.log(res.data);
+					}
 				}}>
 				{(props: FormikProps<Values>) => (
 					<Form style={{ width: '100%' }}>
-						<div className='input-container'>
+						<div className='input-container' data-testid='form-test'>
 							<div>{props.isSubmitting && 'teste'}</div>
 							<div>
 								<ChatLabel>
-									Olá sou ChatNilson,tudo bem ? para começarmos,preciso saber
+									Olá sou ChatNilson, tudo bem ? para começarmos, preciso saber
 									seu nome.
 								</ChatLabel>
 								<ChatInput
@@ -69,7 +71,7 @@ const ChatCadastro: React.FC = () => {
 							{showCityState ? (
 								<div>
 									<ChatLabel>
-										Olá {props.values.name}. Agora que sei seu nome,qual a
+										Olá {props.values.name}. Agora que sei seu nome, qual a
 										cidade e estado que você mora? (Ex:Castro,Paraná)
 									</ChatLabel>
 									<CityStateChatInput setShowNext={setShowBornDate} />
@@ -78,7 +80,7 @@ const ChatCadastro: React.FC = () => {
 							{showBornDate ? (
 								<div>
 									<ChatLabel>
-										Legal,agora que sabemos sua cidade e estado.Quando foi que
+										Legal, agora que sabemos sua cidade e estado.Quando foi que
 										você nasceu?
 									</ChatLabel>
 									<ChatInput
