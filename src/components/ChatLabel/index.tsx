@@ -11,7 +11,7 @@ const ChatLabel: React.FC = ({ children }) => {
 			</div>
 			<div className='triangle'></div>
 			<div className='chat-content'>
-				<span>{children}</span>
+				<span data-testid='label-text'>{children}</span>
 			</div>
 		</div>
 	);

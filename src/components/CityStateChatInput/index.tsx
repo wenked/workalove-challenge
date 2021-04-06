@@ -37,7 +37,9 @@ const CityStateChatInput: React.FC<InputProps> = ({ setShowNext }) => {
 					<input
 						onKeyPress={(e) => {
 							if (e.key === 'Enter') {
-								setShowNext(true);
+								if (!error) {
+									setShowNext(true);
+								}
 							}
 						}}
 						data-testid='citystate-input'

@@ -19,7 +19,9 @@ const ChatInput = (props: FieldHookConfig<string> & InputProps) => {
 						<input
 							onKeyPress={(e) => {
 								if (e.key === 'Enter') {
-									props.setShowNext(true);
+									if (!meta.error) {
+										props.setShowNext(true);
+									}
 								}
 							}}
 							data-testid={`${props.type}-input`}
@@ -32,8 +34,8 @@ const ChatInput = (props: FieldHookConfig<string> & InputProps) => {
 						/>
 						<button
 							data-testid={`${props.type}-enter-button`}
-							type='button'
-							onClick={() => props.setShowNext(true)}>
+							type='submit'
+							onClick={() => !meta.error && props.setShowNext(true)}>
 							<FiSend />
 						</button>
 					</div>

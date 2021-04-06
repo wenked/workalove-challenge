@@ -19,7 +19,6 @@ test('Form test', async () => {
 
 	await waitFor(() => {
 		console.log(wrapper.debug());
-
-		expect(screen.getByTestId('email-label')).toHaveTextContent('Email');
 	});
+	expect(wrapper.container).toHaveTextContent('e-mail');
 });
