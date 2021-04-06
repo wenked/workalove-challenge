@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormikContext } from 'formik';
 import { Values } from '../ChatCadastro';
 import { FiSend } from 'react-icons/fi';
@@ -11,25 +11,42 @@ interface InputProps {
 
 const CityStateChatInput: React.FC<InputProps> = ({ setShowNext }) => {
 	const { initialValues, setFieldValue } = useFormikContext<Values>();
+	const [error, setError] = useState(false);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const StringValues = e.target.value.toString().trim().split(' ');
+		const StringValues = e.target.value.toString().trim().split(',');
 		if (StringValues.length === 2) {
+			setError(false);
 			setFieldValue('city', StringValues[0]);
 			setFieldValue('state', StringValues[1]);
+			return;
 		}
+		setError(true);
 	};
 
 	return (
 		<IconContext.Provider value={{ size: '1.5rem' }}>
 			<div className='citystate-input-field'>
-				<input type='text' onChange={handleChange} />
-				<button
-					type='button'
-					onClick={() => setShowNext(true)}
-					value={initialValues.city}>
-					<FiSend />
-				</button>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'row',
+						padding: '5px',
+						width: '100%',
+					}}>
+					<input
+						type='text'
+						onChange={handleChange}
+						style={{ border: error ? '2px solid red' : '' }}
+					/>
+					<button
+						type='button'
+						onClick={() => !error && setShowNext(true)}
+						value={initialValues.city}>
+						<FiSend />
+					</button>
+				</div>
+				{error ? <div className='error'>Formato inválido!</div> : null}
 			</div>
 		</IconContext.Provider>
 	);

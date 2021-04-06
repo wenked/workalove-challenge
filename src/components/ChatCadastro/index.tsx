@@ -5,6 +5,8 @@ import ChatLabel from '../ChatLabel';
 import CityStateChatInput from '../CityStateChatInput';
 import StarsInput from '../StartsInput';
 import './styles.css';
+import * as yup from 'yup';
+import axios from 'axios';
 
 export interface Values {
 	name: string;
@@ -14,6 +16,15 @@ export interface Values {
 	email: string;
 	stars: number;
 }
+
+const SignupSchema = yup.object().shape({
+	name: yup
+		.string()
+		.min(2, 'Muito Pequeno')
+		.max(50, 'Muito grande')
+		.required('Digite seu nome !'),
+	email: yup.string().email('Email invalido').required('Preencha!'),
+});
 
 const ChatCadastro: React.FC = () => {
 	const [showCityState, setShowCityState] = useState(false);
@@ -32,10 +43,18 @@ const ChatCadastro: React.FC = () => {
 					email: '',
 					stars: 0,
 				}}
-				onSubmit={() => console.log('ae')}>
+				validationSchema={SignupSchema}
+				onSubmit={async (values) => {
+					const res = await axios.post(
+						'https://606b1f44f8678400172e5a94.mockapi.io/user',
+						values
+					);
+					console.log(res.data);
+				}}>
 				{(props: FormikProps<Values>) => (
 					<Form style={{ width: '100%' }}>
 						<div className='input-container'>
+							<div>{props.isSubmitting && 'teste'}</div>
 							<div>
 								<ChatLabel>
 									Olá sou ChatNilson,tudo bem ? para começarmos,preciso saber
@@ -51,16 +70,9 @@ const ChatCadastro: React.FC = () => {
 								<div>
 									<ChatLabel>
 										Olá {props.values.name}. Agora que sei seu nome,qual a
-										cidade e estado que você mora?{' '}
+										cidade e estado que você mora? (Ex:Castro,Paraná)
 									</ChatLabel>
-									{/*<ChatInput
-										name='city'
-										type='text'
-										setShowNext={setShowBornDate}
-                                    />*/}
 									<CityStateChatInput setShowNext={setShowBornDate} />
-									{props.values.city}
-									{props.values.state}
 								</div>
 							) : null}
 							{showBornDate ? (

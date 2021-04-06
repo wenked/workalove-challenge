@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormikContext } from 'formik';
 import { Values } from '../ChatCadastro';
 import { AiFillStar } from 'react-icons/ai';
 import './styles.css';
 import { IconContext } from 'react-icons';
-import { FiSend } from 'react-icons/fi';
 
 const StarsInput: React.FC = () => {
 	const { setFieldValue, values } = useFormikContext<Values>();
+	const [submit, setSubmit] = useState(false);
 
 	return (
 		<IconContext.Provider value={{ size: '1.5rem' }}>
@@ -54,9 +54,17 @@ const StarsInput: React.FC = () => {
 						/>
 					</label>
 				</div>
-				<button type='submit' className='submit-button'>
-					<FiSend />
-				</button>
+				<div className='button-container'>
+					<button
+						type='submit'
+						className='submit-button'
+						onClick={() => setSubmit(true)}>
+						Salvar
+					</button>
+				</div>
+				{submit ? (
+					<div className='submit-msg'>Cadastro salvo com sucesso!</div>
+				) : null}
 			</div>
 		</IconContext.Provider>
 	);

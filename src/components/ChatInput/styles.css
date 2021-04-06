@@ -1,8 +1,22 @@
 .input-field {
 	display: flex;
 	flex-direction: row;
-	margin: 20px;
+	margin: 20px 10px 10px 10px;
 	width: 100%;
+	transition: all 0.3s ease-in;
+}
+
+.input-error-container {
+	display: flex;
+	flex-direction: column;
+
+	width: 100%;
+}
+
+.error {
+	color: red;
+	padding: 10px;
+	width: 40%;
 }
 
 input {
