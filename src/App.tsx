@@ -7,7 +7,14 @@ const App: React.FC = () => {
 
 	return (
 		<div className='container'>
-			<button onClick={() => setToggle(!toggle)}>Cadastre-se</button>
+			<div className='title-container'>
+				<h4>
+					Olá, para se cadastrar inicie uma conversa com Mr.Robot clicando{' '}
+				</h4>{' '}
+				<button className='register-button' onClick={() => setToggle(!toggle)}>
+					Aqui
+				</button>
+			</div>
 			{toggle ? <ChatCadastro /> : null}
 		</div>
 	);

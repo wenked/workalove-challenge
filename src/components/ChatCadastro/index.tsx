@@ -1,7 +1,9 @@
 import { Formik, Form, FormikProps } from 'formik';
 import React, { useState } from 'react';
-import ChatInput from '../../ChatInput';
+import ChatInput from '../ChatInput';
 import ChatLabel from '../ChatLabel';
+import CityStateChatInput from '../CityStateChatInput';
+import StarsInput from '../StartsInput';
 import './styles.css';
 
 export interface Values {
@@ -39,7 +41,11 @@ const ChatCadastro: React.FC = () => {
 									Olá sou ChatNilson,tudo bem ? para começarmos,preciso saber
 									seu nome.
 								</ChatLabel>
-								<ChatInput name='name' type='text' />
+								<ChatInput
+									name='name'
+									type='text'
+									setShowNext={setShowCityState}
+								/>
 							</div>
 							{showCityState ? (
 								<div>
@@ -47,7 +53,14 @@ const ChatCadastro: React.FC = () => {
 										Olá {props.values.name}. Agora que sei seu nome,qual a
 										cidade e estado que você mora?{' '}
 									</ChatLabel>
-									<ChatInput name='city' type='text' />
+									{/*<ChatInput
+										name='city'
+										type='text'
+										setShowNext={setShowBornDate}
+                                    />*/}
+									<CityStateChatInput setShowNext={setShowBornDate} />
+									{props.values.city}
+									{props.values.state}
 								</div>
 							) : null}
 							{showBornDate ? (
@@ -56,21 +69,30 @@ const ChatCadastro: React.FC = () => {
 										Legal,agora que sabemos sua cidade e estado.Quando foi que
 										você nasceu?
 									</ChatLabel>
-									<ChatInput name='borndate' type='date' />
+									<ChatInput
+										setShowNext={setShowEmail}
+										name='borndate'
+										type='date'
+									/>
 								</div>
 							) : null}
 							{showEmail ? (
 								<div>
 									<ChatLabel>Agora me fala teu e-mail por gentilza.</ChatLabel>
-									<ChatInput name='email' type='email' />
+									<ChatInput
+										name='email'
+										type='email'
+										setShowNext={setShowStars}
+									/>
 								</div>
 							) : null}
-							{showEmail ? (
+							{showStars ? (
 								<div>
 									<ChatLabel>
 										Você finalizou o teste faça uam avaliação sobre o processo
 										que realizou até chegar aqui. Nós que agradecemos !
 									</ChatLabel>
+									<StarsInput />
 								</div>
 							) : null}
 						</div>

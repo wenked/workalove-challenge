@@ -9,6 +9,7 @@ const ChatLabel: React.FC = ({ children }) => {
 				<img className='label-img' src={chatbotImg} alt='chat-bot-img' />
 				<span>Mr.Robot</span>
 			</div>
+			<div className='triangle'></div>
 			<div className='chat-content'>
 				<span>{children}</span>
 			</div>

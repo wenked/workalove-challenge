@@ -1,22 +1,32 @@
-.input-field {
+.stars-container {
 	display: flex;
 	flex-direction: row;
-	width: 100%;
 }
 
-input {
+.stars-radio-container {
+	display: flex;
+	flex-direction: row;
+	margin: 20px;
+	width: 100%;
 	background-color: #6c757d;
 	color: #f8f9fa;
 	border-radius: 15px;
 	width: 90%;
 	padding: 10px;
-	margin: 5px;
-
+	min-height: 50px;
 	outline: none;
 	border: none;
 }
 
-button {
+input[type='radio'] {
+	display: none;
+}
+
+.star {
+	cursor: pointer;
+}
+
+.submit-button {
 	display: flex;
 	justify-content: center;
 	align-items: center;

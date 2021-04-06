@@ -29,4 +29,35 @@ body {
 	display: flex;
 	padding-left: 0;
 	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.title-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.register-button {
+	outline: none;
+	cursor: pointer;
+	border: none;
+	color: inherit;
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	font-weight: 700;
+	padding: 0;
+	margin: 0;
+}
+
+.register-button:hover {
+	border-bottom: 1px solid #f8f9fa;
+}
+
+@media (max-width: 960px) {
+	.title-container {
+		padding: 10px;
+		margin: 10px;
+	}
 }

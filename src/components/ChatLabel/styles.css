@@ -4,6 +4,17 @@
 	width: 100%;
 }
 
+.chat-content {
+	background-color: #6c757d;
+	color: #f8f9fa;
+	border-radius: 15px;
+	max-width: 90%;
+	padding: 10px;
+	margin: 0;
+	text-align: left;
+	min-height: 40px;
+}
+
 .img-container {
 	display: flex;
 	flex-direction: row;
@@ -17,11 +28,11 @@
 	margin: 5px;
 }
 
-.chat-content {
-	background-color: #6c757d;
-	color: #f8f9fa;
-	border-radius: 15px;
-	width: 90%;
-	padding: 10px;
-	margin: 5px;
+.triangle {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 10px 10px 10px;
+	border-color: transparent transparent #6c757d transparent;
+	margin-left: 15px;
 }
